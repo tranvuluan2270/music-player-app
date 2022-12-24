@@ -182,9 +182,8 @@ const app = {
       audio.currentTime = seekTime;
     };
 
-    // Khi next song
+    // Khi click next song
     nextBtn.onclick = function () {
-      this.style.color = "#666";
       if (_this.isRandom) {
         _this.playRandomSong();
       } else {
@@ -195,9 +194,8 @@ const app = {
       _this.scrollToActivesong();
     };
 
-    // Khi prev song
+    // Khi click prev song
     prevBtn.onclick = function () {
-      this.style.color = "#666";
       if (_this.isRandom) {
         _this.playRandomSong();
       } else {
@@ -255,7 +253,7 @@ const app = {
     setTimeout(() => {
       $(".song.active").scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
+        block: "end",
       });
     }, 300);
   },
