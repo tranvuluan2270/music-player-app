@@ -1,0 +1,240 @@
+@media only screen and (max-width: 740px) {
+  .background-video {
+    width: unset;
+    height: unset;
+    overflow: unset;
+    display: unset;
+    justify-content: unset;
+    align-items: unset;
+    z-index: unset;
+  }
+
+  .background-video #video {
+    display: none;
+  }
+  .player {
+    width: unset;
+    max-width: 740px;
+    display: unset;
+    align-items: unset;
+    top: unset;
+    justify-content: unset;
+    z-index: unset;
+    margin: 0 auto;
+  }
+
+  .player .icon-pause {
+    display: none;
+  }
+
+  .player.playing .icon-pause {
+    display: inline-block;
+  }
+
+  .player.playing .icon-play {
+    display: none;
+  }
+
+  .dashboard {
+    position: fixed;
+    width: 100%;
+    padding: 16px 16px 14px;
+    background-color: #fff;
+    border-radius: unset;
+    box-shadow: unset;
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+    border: unset;
+    animation: unset;
+    top: 0;
+    max-width: 740px;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .dashboard.non-active {
+    animation: unset;
+  }
+
+  .dashboard.active {
+    transform: unset;
+    animation: unset;
+  }
+
+  .playlist-btn {
+    display: none;
+  }
+
+  .playlist-btn:hover {
+    transform: unset;
+  }
+  .playlist-btn:active {
+    color: unset;
+  }
+  .playlist-btn.active {
+    color: unset;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  header h4 {
+    color: var(--primary-color);
+    font-size: 12px;
+  }
+
+  header h2 {
+    color: var(--text-color);
+    font-size: 20px;
+  }
+
+  /* CD */
+  .cd {
+    display: flex;
+    margin: auto;
+    width: 200px;
+  }
+
+  .cd-thumb {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    background-size: cover;
+    margin: auto;
+  }
+
+  /* CONTROL */
+  .control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 18px 0 8px 0;
+  }
+
+  .control .btn {
+    color: #666;
+    padding: 18px;
+    font-size: 18px;
+  }
+
+  .control .btn.active {
+    color: var(--primary-color);
+  }
+
+  .control .btn-toggle-play {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+  }
+
+  .progress {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 6px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  /* PLAYLIST */
+  .playlist {
+    position: unset;
+    overflow-y: unset;
+    opacity: unset;
+    z-index: unset;
+    width: unset;
+    height: unset;
+    padding: 12px;
+    background: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+    border: unset;
+    animation: unset;
+    margin-top: 424px;
+  }
+
+  .playlist.non-active {
+    animation: unset;
+  }
+
+  .playlist.active {
+    opacity: unset;
+    transform: unset;
+    animation: unset;
+  }
+
+  .song {
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border: unset;
+  }
+
+  .song.active {
+    background-color: var(--primary-color);
+  }
+
+  .song:active {
+    opacity: 0.8;
+  }
+
+  .song.active .option,
+  .song.active .author,
+  .song.active .title {
+    color: #fff;
+  }
+
+  .song .thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 8px;
+  }
+
+  .song .body {
+    flex: 1;
+    padding: 0 16px;
+  }
+
+  .song .title {
+    font-size: 18px;
+    color: var(--text-color);
+  }
+
+  .song .author {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .song .option {
+    padding: 16px 8px;
+    color: #999;
+    font-size: 18px;
+  }
+}
