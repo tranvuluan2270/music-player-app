@@ -5,6 +5,9 @@ const PLAYER_STORAGE_KEY = "MUSIC_PLAYER";
 
 const background = $("#video");
 const player = $(".player");
+const playlistBtn = $(".playlist-btn");
+const playlist = $(".playlist");
+const dashboard = $(".dashboard");
 const cd = $(".cd");
 const songName = $("header h2");
 const songArtist = $("header p");
@@ -16,13 +19,13 @@ const prevBtn = $(".btn-prev");
 const nextBtn = $(".btn-next");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
-const playlist = $(".playlist");
 
 const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
   isRepeat: false,
+  isPlaylistActive: false,
   config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
   setConfig: function (key, value) {
     this.config[key] = value;
@@ -107,9 +110,7 @@ const app = {
                         <h3 class="title">${song.name}</h3>
                         <p class="author">${song.singer}</p>
                     </div>
-                    <div class="option">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
+
                 </div>
 
             `;
@@ -132,6 +133,17 @@ const app = {
       iterations: Infinity,
     });
     cdThumbAnimate.pause();
+
+    // Khi click btn playlist
+    playlistBtn.onclick = function () {
+      playlistBtn.classList.toggle("active");
+      playlist.classList.toggle("active");
+      playlist.classList.remove("non-active");
+      dashboard.classList.toggle("active");
+      dashboard.classList.remove("non-active");
+      _this.isPlaylistActive = !_this.isPlaylistActive;
+      _this.setConfig("isPlaylistActive", _this.isPlaylistActive);
+    };
 
     // Xu ly phong to / thu nho CD
     document.onscroll = function () {
@@ -268,10 +280,14 @@ const app = {
   loadConfig: function () {
     this.isRandom = this.config.isRandom;
     this.isRepeat = this.config.isRepeat;
+    this.isPlaylistActive = this.config.isPlaylistActive;
 
     // Hien thi trang thai ban dau cua button repeat & random
     randomBtn.classList.toggle("active", this.isRandom);
     repeatBtn.classList.toggle("active", this.isRepeat);
+    playlistBtn.classList.toggle("active", this.isPlaylistActive);
+    playlist.classList.toggle("active", this.isPlaylistActive);
+    dashboard.classList.toggle("active", this.isPlaylistActive);
   },
 
   nextSong: function () {

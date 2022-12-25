@@ -36,6 +36,44 @@ html *::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+@keyframes playlistSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(56%);
+  }
+}
+@keyframes playlistSlideLeft {
+  from {
+    opacity: 1;
+    transform: translateX(56%);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dashboardSlideRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes dashboardSlideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .background-video {
   width: 100%;
   height: 100vh;
@@ -43,6 +81,7 @@ html *::-webkit-scrollbar-track {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -10;
 }
 .background-video #video {
   position: absolute;
@@ -57,9 +96,10 @@ html *::-webkit-scrollbar-track {
 .player {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
   position: relative;
+  align-items: center;
+  top: -30px;
+  justify-content: center;
   z-index: 1;
 }
 .player .icon-pause {
@@ -75,6 +115,7 @@ html *::-webkit-scrollbar-track {
 }
 
 .dashboard {
+  position: absolute;
   width: 350px;
   padding: 16px 16px 14px;
   background: rgba(255, 255, 255, 0.5);
@@ -83,6 +124,35 @@ html *::-webkit-scrollbar-track {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: 3px solid rgba(255, 255, 255, 0.3);
+  animation: dashboardSlideRight 0.5s ease;
+}
+
+.dashboard.non-active {
+  animation: none;
+}
+
+.dashboard.active {
+  transform: translateX(-50%);
+  animation: dashboardSlideLeft 0.5s ease;
+}
+
+.playlist-btn {
+  color: var(--sub-text-color);
+  position: absolute;
+  font-size: 20px;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+  transition: transform 0.1s linear;
+}
+.playlist-btn:hover {
+  transform: scale(1.2, 1.2);
+}
+.playlist-btn:active {
+  color: var(--primary-color);
+}
+.playlist-btn.active {
+  color: var(--primary-color);
 }
 
 /* HEADER */
@@ -183,16 +253,30 @@ header p {
 
 /* PLAYLIST */
 .playlist {
-  width: 400px;
-  height: 650px;
-  padding: 24px;
+  position: absolute;
   overflow-y: overlay;
+  opacity: 0;
+  z-index: -1;
+  width: 370px;
+  height: 450px;
+  padding: 24px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 6px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 3px solid rgba(255, 255, 255, 0.3);
+  animation: playlistSlideLeft 0.5s ease;
+}
+
+.playlist.non-active {
+  animation: none;
+}
+
+.playlist.active {
+  opacity: 1;
+  transform: translateX(56%);
+  animation: playlistSlideRight 0.5s ease;
 }
 
 .song {
@@ -235,7 +319,7 @@ header p {
 }
 
 .song .title {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-color);
 }
 
@@ -244,11 +328,11 @@ header p {
   color: var(--sub-text-color);
 }
 
-.song .option {
+/* .song .option {
   padding: 16px 8px;
   color: var(--sub-text-color);
-  font-size: 18px;
-}
+  font-size: 12px;
+} */
 
 @media only screen and (min-width: 740px) and (max-width: 1024) {
   .background-video {
