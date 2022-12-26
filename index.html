@@ -60,15 +60,30 @@
             </div>
           </div>
 
-          <input
-            id="progress"
-            class="progress"
-            type="range"
-            value="0"
-            step="1"
-            min="0"
-            max="100"
-          />
+          <div class="progress-bar">
+            <input
+              id="progress"
+              class="progress"
+              type="range"
+              value="0"
+              step="1"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="volume-bar">
+            <i class="fas fa-volume-up volume-icon block"></i>
+            <i class="fas fa-volume-mute mute-icon"></i>
+            <input
+              id="volume"
+              class="volume"
+              type="range"
+              value="100"
+              step="1"
+              min="0"
+              max="100"
+            />
+          </div>
 
           <audio id="audio" src=""></audio>
         </div>

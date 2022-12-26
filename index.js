@@ -15,10 +15,14 @@ const cdThumb = $(".cd-thumb");
 const audio = $("#audio");
 const playBtn = $(".btn-toggle-play");
 const progress = $("#progress");
+const volume = $("#volume");
+const volumeOn = $(".volume-icon");
+const volumeMute = $(".mute-icon");
 const prevBtn = $(".btn-prev");
 const nextBtn = $(".btn-next");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
+var volumePercent = 100;
 
 const app = {
   currentIndex: 0,
@@ -188,12 +192,6 @@ const app = {
       }
     };
 
-    // Xu ly khi tua song
-    progress.oninput = function (e) {
-      const seekTime = (audio.duration / 100) * e.target.value;
-      audio.currentTime = seekTime;
-    };
-
     // Khi click next song
     nextBtn.onclick = function () {
       if (_this.isRandom) {
@@ -258,6 +256,39 @@ const app = {
         if (e.target.closest(".option")) {
         }
       }
+    };
+
+    // Xu ly khi tua song
+    progress.oninput = function (e) {
+      const seekTime = (audio.duration / 100) * e.target.value;
+      audio.currentTime = seekTime;
+    };
+
+    // Xu ly volume
+    volume.oninput = function (e) {
+      volumePercent = e.target.value / 100;
+      audio.volume = volumePercent;
+      if (volumePercent === 0) {
+        volumeOn.classList.remove("block");
+        volumeMute.classList.add("block");
+      } else {
+        volumeMute.classList.remove("block");
+        volumeOn.classList.add("block");
+      }
+    };
+
+    volumeOn.onclick = function () {
+      volumeOn.classList.remove("block");
+      volumeMute.classList.add("block");
+      audio.volume = 0;
+      volume.value = 0;
+    };
+
+    volumeMute.onclick = function () {
+      volumeMute.classList.remove("block");
+      volumeOn.classList.add("block");
+      audio.volume = 1;
+      volume.value = 100;
     };
   },
 
