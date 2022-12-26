@@ -61,6 +61,10 @@
           </div>
 
           <div class="progress-bar">
+            <div class="progress-time">
+              <p class="progress-time-current"></p>
+              <p class="progress-time-duration"></p>
+            </div>
             <input
               id="progress"
               class="progress"
@@ -71,6 +75,7 @@
               max="100"
             />
           </div>
+
           <div class="volume-bar">
             <i class="fas fa-volume-up volume-icon block"></i>
             <i class="fas fa-volume-mute mute-icon"></i>
@@ -85,7 +90,7 @@
             />
           </div>
 
-          <audio id="audio" src=""></audio>
+          <audio id="audio" src="" preload="metadata"></audio>
         </div>
 
         <!-- Playlist -->

@@ -18,6 +18,8 @@ const progress = $("#progress");
 const volume = $("#volume");
 const volumeOn = $(".volume-icon");
 const volumeMute = $(".mute-icon");
+const trackCurrentTime = $(".progress-time-current");
+const trackDurationTime = $(".progress-time-duration");
 const prevBtn = $(".btn-prev");
 const nextBtn = $(".btn-next");
 const randomBtn = $(".btn-random");
@@ -116,7 +118,6 @@ const app = {
                     </div>
 
                 </div>
-
             `;
     });
     playlist.innerHTML = htmls.join("");
@@ -190,6 +191,32 @@ const app = {
         );
         progress.value = progressPercent;
       }
+      // Hien thi elapsed time
+      let current_minutes = Math.floor(audio.currentTime / 60);
+      let current_seconds = Math.floor(
+        audio.currentTime - current_minutes * 60
+      );
+      if (current_minutes < 10) {
+        current_minutes = `0${current_minutes}`;
+      }
+      if (current_seconds < 10) {
+        current_seconds = `0${current_seconds}`;
+      }
+      trackCurrentTime.innerText = `${current_minutes}:${current_seconds}`;
+    };
+
+    // Hien thi song duration
+    audio.onloadedmetadata = function () {
+      let duration_minutes = Math.floor(audio.duration / 60);
+      let duration_seconds = Math.floor(audio.duration - duration_minutes * 60);
+
+      if (duration_minutes < 10) {
+        duration_minutes = `0${duration_minutes}`;
+      }
+      if (duration_seconds < 10) {
+        duration_seconds = `0${duration_seconds}`;
+      }
+      trackDurationTime.innerText = `${duration_minutes}:${duration_seconds}`;
     };
 
     // Khi click next song
