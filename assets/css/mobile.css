@@ -136,21 +136,11 @@
     border: unset;
   }
 
-  .song .thumb {
-    width: 44px;
-    height: 44px;
-  }
-
   .song .body {
     padding: 0 16px;
   }
 
-  .song .title {
-    font-size: 18px;
-  }
-
   .song .author {
-    font-size: 14px;
     color: #888;
   }
 }
