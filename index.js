@@ -29,11 +29,13 @@ const app = {
   currentIndex: 0,
 
   config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {
+    currentVolume: 100,
+    isUnMuted: true,
+    isMuted: false,
     isPlaying: false,
     isRandom: false,
     isRepeat: false,
     isPlaylistActive: false,
-    currentVolume: 100,
   },
   setConfig: function (key, value) {
     this.config[key] = value;
@@ -294,6 +296,33 @@ const app = {
     };
 
     // Xu ly volume
+    volumeOn.onclick = function () {
+      audio.volume = 0;
+      volume.value = 0;
+      _this.setConfig("currentVolume", 0);
+      _this.isMuted = !_this.isMuted;
+      if (_this.isMuted === _this.isMuted) {
+        _this.setConfig("isMuted", true);
+        _this.setConfig("isUnMuted", false);
+      }
+
+      volumeOn.classList.remove("block", _this.isMuted);
+      volumeMute.classList.add("block", _this.isMuted);
+    };
+
+    volumeMute.onclick = function () {
+      audio.volume = 1;
+      volume.value = 100;
+      _this.setConfig("currentVolume", 100);
+      _this.isUnMuted = !_this.isUnMuted;
+      if (_this.isUnMuted === _this.isUnMuted) {
+        _this.setConfig("isMuted", false);
+        _this.setConfig("isUnMuted", true);
+      }
+      volumeMute.classList.remove("block", _this.isUnMuted);
+      volumeOn.classList.add("block", _this.isUnMuted);
+    };
+
     volume.oninput = function (e) {
       _this.currentVolume = e.target.value / 100;
       audio.volume = _this.currentVolume;
@@ -302,24 +331,14 @@ const app = {
       if (_this.currentVolume === 0) {
         volumeOn.classList.remove("block");
         volumeMute.classList.add("block");
+        _this.setConfig("isMuted", true);
+        _this.setConfig("isUnMuted", false);
       } else {
         volumeMute.classList.remove("block");
         volumeOn.classList.add("block");
+        _this.setConfig("isMuted", false);
+        _this.setConfig("isUnMuted", true);
       }
-    };
-
-    volumeOn.onclick = function () {
-      audio.volume = 0;
-      volume.value = 0;
-      volumeOn.classList.remove("block");
-      volumeMute.classList.add("block");
-    };
-
-    volumeMute.onclick = function () {
-      audio.volume = 1;
-      volume.value = 100;
-      volumeMute.classList.remove("block");
-      volumeOn.classList.add("block");
     };
   },
 
@@ -344,6 +363,8 @@ const app = {
     this.isRepeat = this.config.isRepeat;
     this.isPlaylistActive = this.config.isPlaylistActive;
     this.currentVolume = this.config.currentVolume;
+    this.isMuted = this.config.isMuted;
+    this.isUnMuted = this.config.isUnMuted;
 
     // Hien thi trang thai da luu trong storage
     randomBtn.classList.toggle("active", this.isRandom);
@@ -351,8 +372,18 @@ const app = {
     playlistBtn.classList.toggle("active", this.isPlaylistActive);
     playlist.classList.toggle("active", this.isPlaylistActive);
     dashboard.classList.toggle("active", this.isPlaylistActive);
-    audio.volume = this.currentVolume / 100;
-    volume.value = this.currentVolume;
+
+    if (this.isMuted === true) {
+      audio.volume = 0;
+      volume.value = 0;
+      volumeOn.classList.remove("block");
+      volumeMute.classList.add("block");
+    } else {
+      audio.volume = this.currentVolume / 100;
+      volume.value = this.currentVolume;
+      volumeMute.classList.remove("block");
+      volumeOn.classList.add("block");
+    }
   },
 
   nextSong: function () {
