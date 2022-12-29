@@ -24,15 +24,17 @@ const prevBtn = $(".btn-prev");
 const nextBtn = $(".btn-next");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
-var volumePercent = 100;
 
 const app = {
   currentIndex: 0,
-  isPlaying: false,
-  isRandom: false,
-  isRepeat: false,
-  isPlaylistActive: false,
-  config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
+
+  config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {
+    isPlaying: false,
+    isRandom: false,
+    isRepeat: false,
+    isPlaylistActive: false,
+    currentVolume: 100,
+  },
   setConfig: function (key, value) {
     this.config[key] = value;
     localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
@@ -293,9 +295,11 @@ const app = {
 
     // Xu ly volume
     volume.oninput = function (e) {
-      volumePercent = e.target.value / 100;
-      audio.volume = volumePercent;
-      if (volumePercent === 0) {
+      _this.currentVolume = e.target.value / 100;
+      audio.volume = _this.currentVolume;
+      _this.setConfig("currentVolume", _this.currentVolume * 100);
+
+      if (_this.currentVolume === 0) {
         volumeOn.classList.remove("block");
         volumeMute.classList.add("block");
       } else {
@@ -305,17 +309,17 @@ const app = {
     };
 
     volumeOn.onclick = function () {
-      volumeOn.classList.remove("block");
-      volumeMute.classList.add("block");
       audio.volume = 0;
       volume.value = 0;
+      volumeOn.classList.remove("block");
+      volumeMute.classList.add("block");
     };
 
     volumeMute.onclick = function () {
-      volumeMute.classList.remove("block");
-      volumeOn.classList.add("block");
       audio.volume = 1;
       volume.value = 100;
+      volumeMute.classList.remove("block");
+      volumeOn.classList.add("block");
     };
   },
 
@@ -339,13 +343,16 @@ const app = {
     this.isRandom = this.config.isRandom;
     this.isRepeat = this.config.isRepeat;
     this.isPlaylistActive = this.config.isPlaylistActive;
+    this.currentVolume = this.config.currentVolume;
 
-    // Hien thi trang thai ban dau cua button repeat & random
+    // Hien thi trang thai da luu trong storage
     randomBtn.classList.toggle("active", this.isRandom);
     repeatBtn.classList.toggle("active", this.isRepeat);
     playlistBtn.classList.toggle("active", this.isPlaylistActive);
     playlist.classList.toggle("active", this.isPlaylistActive);
     dashboard.classList.toggle("active", this.isPlaylistActive);
+    audio.volume = this.currentVolume / 100;
+    volume.value = this.currentVolume;
   },
 
   nextSong: function () {
