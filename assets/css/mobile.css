@@ -1,4 +1,7 @@
 @media only screen and (max-width: 740px) {
+  body {
+    overflow-x: hidden;
+  }
   .background-video {
     width: unset;
     height: unset;
@@ -82,13 +85,13 @@
 
   .control .btn {
     padding: 18px;
-    font-size: 18px;
     transition: unset;
   }
-
-  .control .btn-toggle-play {
-    width: 56px;
-    height: 56px;
+  .control .btn:hover {
+    transform: unset;
+  }
+  .control .btn:active {
+    color: unset;
   }
 
   .progress {
@@ -102,7 +105,6 @@
   /* PLAYLIST */
   .playlist {
     position: unset;
-    overflow-y: unset;
     opacity: unset;
     z-index: unset;
     width: unset;
@@ -115,7 +117,7 @@
     -webkit-backdrop-filter: unset;
     border: unset;
     animation: unset;
-    margin-top: 445px;
+    margin-top: 448px;
   }
 
   .playlist.non-active {
@@ -129,10 +131,8 @@
   }
 
   .song {
-    margin-bottom: 12px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
     border: unset;
   }
 
