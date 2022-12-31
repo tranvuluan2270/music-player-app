@@ -85,8 +85,8 @@ const app = {
       image: "./assets/img/song7.jpg",
     },
     {
-      name: "String Quintet in E Major",
-      singer: "Luigi Boccherini",
+      name: "One Summer's Day",
+      singer: "Joe Hisaishi",
       path: "./assets/music/song8.mp3",
       image: "./assets/img/song8.jpg",
     },
@@ -101,6 +101,36 @@ const app = {
       singer: "Michael Giacchino",
       path: "./assets/music/song10.mp3",
       image: "./assets/img/song10.jpg",
+    },
+    {
+      name: "Raindrop Waltz No. 1",
+      singer: "Joshua Kyan Aalampour",
+      path: "./assets/music/song11.mp3",
+      image: "./assets/img/song11.jpg",
+    },
+    {
+      name: "Waltz Katzen Blut",
+      singer: "Yuji Nomi",
+      path: "./assets/music/song12.mp3",
+      image: "./assets/img/song12.jpg",
+    },
+    {
+      name: "Paris Loves Lovers",
+      singer: "Cole Porter",
+      path: "./assets/music/song13.mp3",
+      image: "./assets/img/song13.jpg",
+    },
+    {
+      name: "The Promise of the World",
+      singer: "Yuka",
+      path: "./assets/music/song14.mp3",
+      image: "./assets/img/song14.jpg",
+    },
+    {
+      name: "Vivaldi Variation",
+      singer: "Florian Christl",
+      path: "./assets/music/song15.mp3",
+      image: "./assets/img/song15.jpg",
     },
   ],
 
