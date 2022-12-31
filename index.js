@@ -49,8 +49,8 @@ const app = {
       image: "./assets/img/song1.jpg",
     },
     {
-      name: "Nocturne Op.9 No.2",
-      singer: "Chopin",
+      name: "Nocturne Op. 9 No. 2",
+      singer: "Alessandro Clerici, Elena Brunello",
       path: "./assets/music/song2.mp3",
       image: "./assets/img/song2.jpg",
     },
@@ -62,7 +62,7 @@ const app = {
     },
     {
       name: "Mariage d'amour",
-      singer: "Paul de Senneville",
+      singer: "Richard Clayderman",
       path: "./assets/music/song4.mp3",
       image: "./assets/img/song4.jpg",
     },
