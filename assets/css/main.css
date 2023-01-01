@@ -167,8 +167,8 @@ header p {
   width: 200px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border: 10px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  border: 8px solid rgba(255, 255, 255, 0.3);
 }
 
 .cd-thumb {
@@ -178,7 +178,6 @@ header p {
   background-color: #333;
   background-size: cover;
   margin: auto;
-  image-rendering: optimizeQuality;
 }
 
 /* CONTROL */
@@ -241,6 +240,7 @@ header p {
   -webkit-appearance: none;
   appearance: none;
   height: 12px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.3);
   outline: none;
   opacity: 0.7;
@@ -260,10 +260,11 @@ header p {
 .volume::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
+  border-radius: 16px;
   width: 12px;
   height: 12px;
   background-color: var(--primary-color);
-  box-shadow: -200px 50px 0px 200px var(--secondary-color);
+  box-shadow: -200px 50px 0px 195px var(--secondary-color);
 }
 
 .volume-icon,

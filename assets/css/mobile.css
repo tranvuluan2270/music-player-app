@@ -73,9 +73,13 @@
   /* CD */
   .cd {
     border-radius: unset;
-    background: unset;
     box-shadow: unset;
+    background: unset;
     border: unset;
+  }
+  .cd-thumb {
+    border-radius: unset;
+    transform: none !important;
   }
 
   /* CONTROL */

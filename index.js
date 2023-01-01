@@ -49,8 +49,8 @@ const app = {
       image: "./assets/img/song1.jpg",
     },
     {
-      name: "Nocturne Op. 9 No. 2",
-      singer: "Alessandro Clerici, Elena Brunello",
+      name: "Nocturne Op.9 No.2",
+      singer: "Chopin",
       path: "./assets/music/song2.mp3",
       image: "./assets/img/song2.jpg",
     },
@@ -204,6 +204,7 @@ const app = {
     // Khi song duoc play
     audio.onplay = function () {
       _this.isPlaying = true;
+      _this.setConfig("isPlaying", _this.isPlaying);
       player.classList.add("playing");
       cdThumbAnimate.play();
       background.play();
@@ -212,6 +213,7 @@ const app = {
     // Khi song bi pause
     audio.onpause = function () {
       _this.isPlaying = false;
+      _this.setConfig("isPlaying", _this.isPlaying);
       player.classList.remove("playing");
       cdThumbAnimate.pause();
       background.pause();
