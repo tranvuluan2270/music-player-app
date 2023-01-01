@@ -26,7 +26,8 @@ const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
 
 const app = {
-  currentIndex: 0,
+  currentSongIndex: 0,
+  playedSongs: [],
 
   config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {
     currentVolume: 100,
@@ -138,7 +139,7 @@ const app = {
     const htmls = this.songs.map((song, index) => {
       return `
                 <div class="song ${
-                  index === this.currentIndex ? "active" : ""
+                  index === this.currentSongIndex ? "active" : ""
                 }" data-index="${index}">
                     <div
                         class="thumb"
@@ -159,7 +160,7 @@ const app = {
   defineProperties: function () {
     Object.defineProperty(this, "currentSong", {
       get: function () {
-        return this.songs[this.currentIndex];
+        return this.songs[this.currentSongIndex];
       },
     });
   },
@@ -309,7 +310,7 @@ const app = {
       if (songNode || e.target.closest(".option")) {
         // Xu ly khi click vao song
         if (songNode) {
-          _this.currentIndex = Number(songNode.dataset.index);
+          _this.currentSongIndex = Number(songNode.dataset.index);
           _this.loadCurrentSong();
           _this.render();
           audio.play();
@@ -419,27 +420,34 @@ const app = {
   },
 
   nextSong: function () {
-    this.currentIndex++;
-    if (this.currentIndex >= this.songs.length) {
-      this.currentIndex = 0;
+    this.currentSongIndex++;
+    if (this.currentSongIndex >= this.songs.length) {
+      this.currentSongIndex = 0;
     }
     this.loadCurrentSong();
   },
 
   prevSong: function () {
-    this.currentIndex--;
-    if (this.currentIndex < 0) {
-      this.currentIndex = this.songs.length - 1;
+    this.currentSongIndex--;
+    if (this.currentSongIndex < 0) {
+      this.currentSongIndex = this.songs.length - 1;
     }
     this.loadCurrentSong();
   },
 
   playRandomSong: function () {
-    let newIndex;
+    this.playedSongs.push(this.currentSongIndex);
+    let newSongIndex;
     do {
-      newIndex = Math.floor(Math.random() * this.songs.length);
-    } while (newIndex === this.currentIndex);
-    this.currentIndex = newIndex;
+      newSongIndex = Math.floor(Math.random() * this.songs.length);
+    } while (
+      this.playedSongs.includes(newSongIndex) &&
+      this.playedSongs.length < this.songs.length
+    );
+    if (this.playedSongs.length === this.songs.length) {
+      this.playedSongs = [];
+    }
+    this.currentSongIndex = newSongIndex;
     this.loadCurrentSong();
   },
 
