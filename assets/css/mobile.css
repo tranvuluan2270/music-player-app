@@ -85,6 +85,7 @@
   .cd-thumb {
     border-radius: unset;
     transform: none !important;
+    -webkit-transform: none !important;
   }
 
   /* CONTROL */
