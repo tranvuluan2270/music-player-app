@@ -110,9 +110,9 @@
 
     <script>
       const preloader = document.querySelector(".preloader");
-      window.onload = () => {
+      window.onload = setTimeout(() => {
         preloader.classList.toggle("fade-out");
-      };
+      }, 1000);
     </script>
     <script src="index.js"></script>
   </body>

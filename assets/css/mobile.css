@@ -2,6 +2,11 @@
   body {
     overflow-x: hidden;
   }
+
+  .preloader {
+    display: none;
+  }
+
   .background-video {
     width: unset;
     height: unset;
