@@ -114,9 +114,8 @@
 
   /* PLAYLIST */
   .playlist {
-    position: unset;
+    position: relative;
     opacity: unset;
-    z-index: unset;
     width: unset;
     height: unset;
     padding: 12px;
