@@ -1,6 +1,7 @@
 @media only screen and (max-width: 740px) {
   body {
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   .preloader {
@@ -27,14 +28,13 @@
     align-items: unset;
     top: unset;
     justify-content: unset;
-    z-index: unset;
     margin: 0 auto;
+    z-index: 2;
   }
 
   .dashboard {
     position: fixed;
     width: 100%;
-    padding: 16px 16px 14px;
     background-color: #fff;
     border-radius: unset;
     box-shadow: unset;
@@ -44,7 +44,7 @@
     animation: unset;
     top: 0;
     max-width: 740px;
-    border-bottom: 1px solid #ebebeb;
+    z-index: 1;
   }
 
   .dashboard.non-active {
@@ -70,11 +70,6 @@
     color: unset;
   }
 
-  /* HEADER */
-  header h4 {
-    font-size: 12px;
-  }
-
   /* CD */
   .cd {
     border-radius: unset;
@@ -84,8 +79,8 @@
   }
   .cd-thumb {
     border-radius: unset;
-    transform: none !important;
-    -webkit-transform: none !important;
+    -webkit-transform: rotate(0deg) !important;
+    transform: rotate(0deg) !important;
   }
 
   /* CONTROL */
@@ -104,12 +99,22 @@
     color: unset;
   }
 
-  .progress {
+  .progress,
+  .volume {
     background: rgba(0, 0, 0, 0.1);
+    border-radius: unset;
+    -webkit-transition: unset;
+    transition: unset;
+    -webkit-appearance: unset;
+    appearance: unset;
   }
 
   .volume-bar {
     display: none;
+  }
+  .progress::-webkit-slider-thumb,
+  .volume::-webkit-slider-thumb {
+    border-radius: unset;
   }
 
   /* PLAYLIST */
@@ -127,6 +132,7 @@
     border: unset;
     animation: unset;
     margin-top: 448px;
+    z-index: 0;
   }
 
   .playlist.non-active {

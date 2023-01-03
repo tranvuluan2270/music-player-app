@@ -163,7 +163,7 @@ html {
   align-items: center;
   top: -30px;
   justify-content: center;
-  z-index: 1;
+  z-index: 0;
 }
 .player .icon-pause {
   display: none;
@@ -188,6 +188,7 @@ html {
   -webkit-backdrop-filter: blur(2px);
   border: 3px solid rgba(255, 255, 255, 0.3);
   animation: dashboardSlideRight 0.5s ease;
+  z-index: -1;
 }
 
 .dashboard.non-active {
@@ -372,7 +373,7 @@ header p {
   position: absolute;
   overflow-y: overlay;
   opacity: 0;
-  z-index: -1;
+  z-index: -2;
   width: 370px;
   height: 450px;
   padding: 24px;
