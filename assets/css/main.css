@@ -180,7 +180,7 @@ html {
 .dashboard {
   position: absolute;
   width: 350px;
-  padding: 16px 16px 14px;
+  padding: 16px;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -306,6 +306,7 @@ header p {
 }
 .progress-bar {
   width: 100%;
+  padding: 0 16px;
 }
 .progress-time {
   display: flex;

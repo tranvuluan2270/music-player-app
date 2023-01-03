@@ -45,6 +45,7 @@
     top: 0;
     max-width: 740px;
     z-index: 1;
+    border-bottom: 1px solid #ebebeb;
   }
 
   .dashboard.non-active {
@@ -85,7 +86,7 @@
 
   /* CONTROL */
   .control {
-    padding: 18px 0 8px 0;
+    padding: 16px 0 8px 0;
   }
 
   .control .btn {
@@ -112,6 +113,10 @@
   .volume-bar {
     display: none;
   }
+
+  .progress-bar {
+    padding: unset;
+  }
   .progress::-webkit-slider-thumb,
   .volume::-webkit-slider-thumb {
     border-radius: unset;
@@ -123,7 +128,7 @@
     opacity: unset;
     width: unset;
     height: unset;
-    padding: 12px;
+    padding: 16px;
     background: unset;
     border-radius: unset;
     box-shadow: unset;
@@ -131,7 +136,7 @@
     -webkit-backdrop-filter: unset;
     border: unset;
     animation: unset;
-    margin-top: 448px;
+    margin-top: 450px;
     z-index: 0;
   }
 
@@ -148,7 +153,6 @@
   .song {
     background-color: #fff;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-    border: unset;
   }
 
   .song .body {

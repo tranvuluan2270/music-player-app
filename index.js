@@ -46,116 +46,114 @@ const app = {
     {
       name: "Waltz No.2",
       singer: "Cihat Askin",
-      path: "./assets/music/song1.mp3",
-      image: "./assets/img/song1.jpg",
+      path: "assets/music/song1.mp3",
+      image: "assets/img/song1.jpg",
     },
     {
       name: "Nocturne Op.9 No.2",
       singer: "Chopin",
-      path: "./assets/music/song2.mp3",
-      image: "./assets/img/song2.jpg",
+      path: "assets/music/song2.mp3",
+      image: "assets/img/song2.jpg",
     },
     {
       name: "Waltz in A minor",
       singer: "Chopin",
-      path: "./assets/music/song3.mp3",
-      image: "./assets/img/song3.jpg",
+      path: "assets/music/song3.mp3",
+      image: "assets/img/song3.jpg",
     },
     {
       name: "Mariage d'amour",
       singer: "Richard Clayderman",
-      path: "./assets/music/song4.mp3",
-      image: "./assets/img/song4.jpg",
+      path: "assets/music/song4.mp3",
+      image: "assets/img/song4.jpg",
     },
     {
       name: "Merry-Go-Round of Life",
       singer: "Joe Hisaishi",
-      path: "./assets/music/song5.mp3",
-      image: "./assets/img/song5.jpg",
+      path: "assets/music/song5.mp3",
+      image: "assets/img/song5.jpg",
     },
     {
       name: "A Town with an Ocean View",
       singer: "Joe Hisaishi",
-      path: "./assets/music/song6.mp3",
-      image: "./assets/img/song6.jpg",
+      path: "assets/music/song6.mp3",
+      image: "assets/img/song6.jpg",
     },
     {
       name: "Reprise",
       singer: "Joe Hisaishi",
-      path: "./assets/music/song7.mp3",
-      image: "./assets/img/song7.jpg",
+      path: "assets/music/song7.mp3",
+      image: "assets/img/song7.jpg",
     },
     {
       name: "One Summer's Day",
       singer: "Joe Hisaishi",
-      path: "./assets/music/song8.mp3",
-      image: "./assets/img/song8.jpg",
+      path: "assets/music/song8.mp3",
+      image: "assets/img/song8.jpg",
     },
     {
       name: "Married Life",
       singer: "Michael Giacchino",
-      path: "./assets/music/song9.mp3",
-      image: "./assets/img/song9.jpg",
+      path: "assets/music/song9.mp3",
+      image: "assets/img/song9.jpg",
     },
     {
       name: "Le Festin",
       singer: "Michael Giacchino",
-      path: "./assets/music/song10.mp3",
-      image: "./assets/img/song10.jpg",
+      path: "assets/music/song10.mp3",
+      image: "assets/img/song10.jpg",
     },
     {
       name: "Raindrop Waltz No. 1",
       singer: "Joshua Kyan Aalampour",
-      path: "./assets/music/song11.mp3",
-      image: "./assets/img/song11.jpg",
+      path: "assets/music/song11.mp3",
+      image: "assets/img/song11.jpg",
     },
     {
       name: "Waltz Katzen Blut",
       singer: "Yuji Nomi",
-      path: "./assets/music/song12.mp3",
-      image: "./assets/img/song12.jpg",
+      path: "assets/music/song12.mp3",
+      image: "assets/img/song12.jpg",
     },
     {
       name: "Paris Loves Lovers",
       singer: "Cole Porter",
-      path: "./assets/music/song13.mp3",
-      image: "./assets/img/song13.jpg",
+      path: "assets/music/song13.mp3",
+      image: "assets/img/song13.jpg",
     },
     {
       name: "The Promise of the World",
       singer: "Yuka",
-      path: "./assets/music/song14.mp3",
-      image: "./assets/img/song14.jpg",
+      path: "assets/music/song14.mp3",
+      image: "assets/img/song14.jpg",
     },
     {
       name: "Vivaldi Variation",
       singer: "Florian Christl",
-      path: "./assets/music/song15.mp3",
-      image: "./assets/img/song15.jpg",
+      path: "assets/music/song15.mp3",
+      image: "assets/img/song15.jpg",
     },
   ],
 
   render: function () {
     const htmls = this.songs.map((song, index) => {
       return `
-                <div class="song ${
-                  index === this.currentSongIndex ? "active" : ""
-                }" data-index="${index}">
-                    <div
-                        class="thumb"
-                        style="
-                        background-image: url('${song.image}');
-                        "
-                    ></div>
-                    <div class="body">
-                        <h3 class="title">${song.name}</h3>
-                        <p class="author">${song.singer}</p>
-                    </div>
-
-                </div>
-            `;
+        <div class="song ${
+          index === this.currentSongIndex ? "active" : ""
+        }" data-index="${index}">
+            <div
+                class="thumb"
+                style="
+                background-image: url('${song.image}')"></div>
+            <div class="body">
+                <h3 class="title">${song.name}</h3>
+                <p class="author">${song.singer}</p>
+            </div>
+        </div>
+      `;
     });
     playlist.innerHTML = htmls.join("");
+    trackCurrentTime.innerText = "00:00";
   },
   defineProperties: function () {
     Object.defineProperty(this, "currentSong", {
@@ -169,7 +167,7 @@ const app = {
     const cdWidth = cd.offsetWidth;
     // Xu ly CD quay / dung
     const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
-      duration: 10000, //  10 seconds
+      duration: 20000, //  20 seconds
       iterations: Infinity,
     });
     cdThumbAnimate.pause();
@@ -207,7 +205,6 @@ const app = {
       _this.isPlaying = true;
       _this.setConfig("isPlaying", _this.isPlaying);
       player.classList.add("playing");
-      cdThumbAnimate.play();
       background.play();
     };
 
@@ -227,6 +224,12 @@ const app = {
           (audio.currentTime / audio.duration) * 100
         );
         progress.value = progressPercent;
+
+        if (window.matchMedia("(max-width: 740px)").matches) {
+          cdThumbAnimate.pause();
+        } else {
+          cdThumbAnimate.play();
+        }
       }
       // Hien thi elapsed time
       let current_minutes = Math.floor(audio.currentTime / 60);
@@ -263,6 +266,7 @@ const app = {
       } else {
         _this.nextSong();
       }
+      cdThumbAnimate.pause();
       audio.play();
       _this.render();
       _this.scrollToActivesong();
@@ -275,6 +279,7 @@ const app = {
       } else {
         _this.prevSong();
       }
+      cdThumbAnimate.pause();
       audio.play();
       _this.render();
       _this.scrollToActivesong();
@@ -313,6 +318,7 @@ const app = {
           _this.currentSongIndex = Number(songNode.dataset.index);
           _this.loadCurrentSong();
           _this.render();
+          cdThumbAnimate.pause();
           audio.play();
         }
 
@@ -326,6 +332,7 @@ const app = {
     progress.oninput = function (e) {
       const seekTime = (audio.duration / 100) * e.target.value;
       audio.currentTime = seekTime;
+      audio.play();
     };
 
     // Xu ly volume
