@@ -1,8 +1,9 @@
 :root {
-  --primary-color: #612500;
-  --secondary-color: #612500cc;
-  --text-color: #222;
-  --sub-text-color: #444;
+  --primary-color: #ad421b;
+  --secondary-color: #ad421bcc;
+  --text-color: #333;
+  --sub-text-color: #555;
+  --control-btn-color: #383838;
 }
 
 * {
@@ -201,13 +202,12 @@ html {
 }
 
 .playlist-btn {
-  color: var(--sub-text-color);
-  position: absolute;
   font-size: 20px;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
+  right: 18px;
+  color: var(--control-btn-color);
+  position: absolute;
   transition: transform 0.1s linear;
+  cursor: pointer;
 }
 .playlist-btn:hover {
   transform: scale(1.2, 1.2);
@@ -232,7 +232,7 @@ header h4 {
 
 header h2 {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 header p {
@@ -269,7 +269,7 @@ header p {
 }
 
 .control .btn {
-  color: var(--sub-text-color);
+  color: var(--control-btn-color);
   font-size: 20px;
   cursor: pointer;
   transition: transform 0.1s linear;
@@ -290,7 +290,7 @@ header p {
   height: 50px;
   border-radius: 50%;
   font-size: 20px;
-  color: #fff;
+  color: #f7f5eb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,9 +324,6 @@ header p {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.3);
   outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
   cursor: pointer;
   overflow: hidden;
 }
@@ -354,7 +351,7 @@ header p {
   margin-right: 5px;
   display: none;
   cursor: pointer;
-  color: var(--sub-text-color);
+  color: var(--control-btn-color);
   transition: transform 0.1s linear;
 }
 .volume-icon:hover,
@@ -424,8 +421,8 @@ header p {
 }
 
 .song .thumb {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 5px;
   background-size: cover;
   margin: 0 8px;
