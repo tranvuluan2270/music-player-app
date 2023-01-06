@@ -12,10 +12,6 @@
   box-sizing: inherit;
 }
 
-body {
-  background-color: #f5f5f5;
-}
-
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -92,8 +88,7 @@ html {
   }
 }
 .preloader {
-  background: url("../img/background.jpg") no-repeat center;
-  background-size: cover;
+  background: linear-gradient(to top, #16222a, #3a6073);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -121,7 +116,7 @@ html {
   border: 5px solid #fff;
   opacity: 1;
   border-radius: 50%;
-  animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) 10;
+  animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) 20;
 }
 .ripple div:nth-child(2) {
   animation-delay: -0.5s;
