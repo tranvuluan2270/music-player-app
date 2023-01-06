@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music player</title>
+    <title>Music Player App</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link
       rel="stylesheet"
@@ -17,22 +17,30 @@
     />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/mobile.css" />
-    <link rel="stylesheet" href="assets/css/tablet.css" />
   </head>
   <body>
     <div class="preloader">
-      <span class="loader"><span class="loader-inner"></span></span>
+      <div class="ripple">
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <div class="background-video">
-      <video id="video" muted loop>
+      <video id="video" muted loop preload="auto">
         <source src="assets/video/background-video.webm" type="video/webm" />
       </video>
 
       <div class="player">
         <!-- Dashboard -->
         <div class="dashboard non-active">
-          <i class="fas fa-list playlist-btn"></i>
+          <div class="playlist-btn"><i class="fas fa-list"></i></div>
+          <div class="tip-btn">
+            <span class="tip-text"
+              ><b>Useless tip:</b> Enter fullscreen (F11)</span
+            >
+            <i class="far fa-question-circle"></i>
+          </div>
           <!-- Header -->
           <header>
             <h4>Now playing:</h4>
@@ -103,12 +111,6 @@
       </div>
     </div>
 
-    <script>
-      const preloader = document.querySelector(".preloader");
-      window.onload = setTimeout(() => {
-        preloader.classList.toggle("fade-out");
-      }, 2000);
-    </script>
     <script src="index.js"></script>
   </body>
 </html>

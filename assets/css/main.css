@@ -21,47 +21,34 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-@keyframes loader {
+@keyframes ripple {
   0% {
-    transform: rotate(0deg);
+    top: 100px;
+    left: 100px;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
   }
-
-  25% {
-    transform: rotate(180deg);
+  4.9% {
+    top: 100px;
+    left: 100px;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
-
-  50% {
-    transform: rotate(180deg);
+  5% {
+    top: 100px;
+    left: 100px;
+    width: 0;
+    height: 0;
+    opacity: 1;
   }
-
-  75% {
-    transform: rotate(360deg);
-  }
-
   100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader-inner {
-  0% {
-    height: 0%;
-  }
-
-  25% {
-    height: 0%;
-  }
-
-  50% {
-    height: 100%;
-  }
-
-  75% {
-    height: 100%;
-  }
-
-  100% {
-    height: 0%;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
   }
 }
 
@@ -105,8 +92,8 @@ html {
   }
 }
 .preloader {
-  display: block;
-  background-color: #242f3f;
+  background: url("/assets/img/background.png") no-repeat center;
+  background-size: cover;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -122,21 +109,22 @@ html {
   pointer-events: none;
 }
 
-.loader {
+.ripple {
   display: inline-block;
-  width: 50px;
-  height: 50px;
   position: relative;
-  border: 4px solid #fff;
-  animation: loader 2s 10 ease;
+  top: -30px;
+  width: 200px;
+  height: 200px;
 }
-
-.loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #fff;
-  animation: loader-inner 2s 10 ease-in;
+.ripple div {
+  position: absolute;
+  border: 5px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) 10;
+}
+.ripple div:nth-child(2) {
+  animation-delay: -0.5s;
 }
 
 .background-video {
@@ -149,7 +137,7 @@ html {
 }
 .background-video #video {
   position: fixed;
-  object-fit: fill;
+  object-fit: cover;
   pointer-events: none;
   top: 0;
   left: 0;
@@ -162,7 +150,6 @@ html {
   display: flex;
   position: relative;
   align-items: center;
-  top: -30px;
   justify-content: center;
   z-index: 0;
 }
@@ -186,7 +173,6 @@ html {
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
   border: 3px solid rgba(255, 255, 255, 0.3);
   animation: dashboardSlideRight 0.5s ease;
   z-index: -1;
@@ -201,15 +187,52 @@ html {
   animation: dashboardSlideLeft 0.5s ease;
 }
 
-.playlist-btn {
+.playlist-btn,
+.tip-btn {
+  display: flex;
   font-size: 20px;
-  right: 18px;
   color: var(--control-btn-color);
   position: absolute;
   transition: transform 0.1s linear;
+}
+
+.playlist-btn {
+  right: 18px;
   cursor: pointer;
 }
-.playlist-btn:hover {
+
+.tip-btn {
+  left: 18px;
+}
+
+.tip-btn:hover {
+  color: var(--primary-color);
+}
+
+.tip-text {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  position: absolute;
+  bottom: 130%;
+  padding: 5px 10px;
+  font-size: 10px;
+  opacity: 0;
+  transition: all 0.5s;
+  color: var(--text-color);
+}
+.tip-text b {
+  color: var(--primary-color);
+}
+.tip-btn:hover .tip-text {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+.playlist-btn:hover,
+.tip-btn:hover {
   transform: scale(1.2, 1.2);
 }
 .playlist-btn:active {
@@ -379,7 +402,6 @@ header p {
   border-radius: 6px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border: 3px solid rgba(255, 255, 255, 0.3);
   animation: playlistSlideLeft 0.5s ease;
 }

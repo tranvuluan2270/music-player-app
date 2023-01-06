@@ -3,6 +3,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const PLAYER_STORAGE_KEY = "MUSIC_PLAYER";
 
+const preloader = $(".preloader");
 const background = $("#video");
 const player = $(".player");
 const playlistBtn = $(".playlist-btn");
@@ -165,6 +166,14 @@ const app = {
   handleEvents: function () {
     const _this = this;
     const cdWidth = cd.offsetWidth;
+
+    // Xu ly preloader
+    window.onload = function () {
+      setTimeout(function () {
+        preloader.classList.toggle("fade-out");
+      }, 2000);
+    };
+
     // Xu ly CD quay / dung
     const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
       duration: 20000, //  20 seconds
