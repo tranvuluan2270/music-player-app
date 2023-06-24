@@ -4,6 +4,7 @@ const $$ = document.querySelectorAll.bind(document);
 const PLAYER_STORAGE_KEY = "MUSIC_PLAYER";
 
 const preloader = $(".preloader");
+const loaderbar = $$(".bar");
 const background = $("#video");
 const player = $(".player");
 const playlistBtn = $(".playlist-btn");
@@ -45,94 +46,64 @@ const app = {
   },
   songs: [
     {
-      name: "Waltz No.2",
-      singer: "Cihat Askin",
+      name: "Midnight Pretenders",
+      singer: "Tomoko Aran",
       path: "assets/music/song1.mp3",
       image: "assets/img/song1.jpg",
     },
     {
-      name: "Nocturne Op.9 No.2",
-      singer: "Chopin",
+      name: "Stay With Me",
+      singer: "Miki Matsubara",
       path: "assets/music/song2.mp3",
       image: "assets/img/song2.jpg",
     },
     {
-      name: "Waltz in A minor",
-      singer: "Chopin",
+      name: "Night Cruising",
+      singer: "Momoko Kikuchi",
       path: "assets/music/song3.mp3",
       image: "assets/img/song3.jpg",
     },
     {
-      name: "Mariage d'amour",
-      singer: "Richard Clayderman",
+      name: "Sentimental",
+      singer: "Night Tempo ft. Miyu Takeuchi",
       path: "assets/music/song4.mp3",
       image: "assets/img/song4.jpg",
     },
     {
-      name: "Merry-Go-Round of Life",
-      singer: "Joe Hisaishi",
+      name: "Shyness Boy",
+      singer: "Anri",
       path: "assets/music/song5.mp3",
-      image: "assets/img/song5.jpg",
+      image: "assets/img/song5-6.jpg",
     },
     {
-      name: "A Town with an Ocean View",
-      singer: "Joe Hisaishi",
+      name: "I Can't Stop The Loneliness",
+      singer: "Anri",
       path: "assets/music/song6.mp3",
-      image: "assets/img/song6.jpg",
+      image: "assets/img/song5-6.jpg",
     },
     {
-      name: "Reprise",
-      singer: "Joe Hisaishi",
+      name: "Last Summer Whisper",
+      singer: "Anri",
       path: "assets/music/song7.mp3",
-      image: "assets/img/song7.jpg",
+      image: "assets/img/song7-8.jpg",
     },
     {
-      name: "One Summer's Day",
-      singer: "Joe Hisaishi",
+      name: "Fly By Day",
+      singer: "Anri",
       path: "assets/music/song8.mp3",
-      image: "assets/img/song8.jpg",
+      image: "assets/img/song7-8.jpg",
     },
     {
-      name: "Married Life",
-      singer: "Michael Giacchino",
+      name: "Slow Motion",
+      singer: "Akina Nakamori",
       path: "assets/music/song9.mp3",
       image: "assets/img/song9.jpg",
     },
     {
-      name: "Le Festin",
-      singer: "Michael Giacchino",
+      name: "Last Runner",
+      singer: "Momoko Kikuchi",
       path: "assets/music/song10.mp3",
       image: "assets/img/song10.jpg",
-    },
-    {
-      name: "Raindrop Waltz No. 1",
-      singer: "Joshua Kyan Aalampour",
-      path: "assets/music/song11.mp3",
-      image: "assets/img/song11.jpg",
-    },
-    {
-      name: "Waltz Katzen Blut",
-      singer: "Yuji Nomi",
-      path: "assets/music/song12.mp3",
-      image: "assets/img/song12.jpg",
-    },
-    {
-      name: "Paris Loves Lovers",
-      singer: "Cole Porter",
-      path: "assets/music/song13.mp3",
-      image: "assets/img/song13.jpg",
-    },
-    {
-      name: "The Promise of the World",
-      singer: "Yuka",
-      path: "assets/music/song14.mp3",
-      image: "assets/img/song14.jpg",
-    },
-    {
-      name: "Vivaldi Variation",
-      singer: "Florian Christl",
-      path: "assets/music/song15.mp3",
-      image: "assets/img/song15.jpg",
     },
   ],
 
@@ -171,6 +142,9 @@ const app = {
     window.onload = function () {
       setTimeout(function () {
         preloader.classList.toggle("fade-out");
+        for (let i = 0; i < loaderbar.length; i++) {
+          loaderbar[i].classList.toggle("pause");
+        }
       }, 2000);
     };
 
