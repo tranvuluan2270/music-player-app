@@ -145,7 +145,7 @@ const app = {
         for (let i = 0; i < loaderbar.length; i++) {
           loaderbar[i].classList.toggle("pause");
         }
-      }, 2000);
+      }, 3000);
     };
 
     // Xu ly CD quay / dung
